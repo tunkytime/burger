@@ -15,7 +15,6 @@ module.exports = {
     insertOne: function (table, col, cl, cb) {
 
         var queryString = "INSERT INTO ?? (??) VALUES (?)"
-
         connection.query(queryString, [table, col, cl.burger_name], function (err, data) {
             if (err) {
                 throw err;
@@ -24,7 +23,18 @@ module.exports = {
         })
     },
     updateOne: function (table, id, cb) {
+
         var queryString = "UPDATE ?? SET devoured = 1 WHERE id = ?;"
+        connection.query(queryString, [table, id], function (err, data) {
+            if (err) {
+                throw err;
+            }
+            cb(data);
+        })
+    },
+    deleteRow: function (table, id, cb) {
+
+        var queryString = "DELETE FROM ?? WHERE id = ?;"
         connection.query(queryString, [table, id], function (err, data) {
             if (err) {
                 throw err;
