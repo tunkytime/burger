@@ -9,5 +9,8 @@ module.exports = {
     },
     updateOne: function (id, cb) {
         orm.updateOne("burgers", id, cb)
+    },
+    deleteRow: function (id, cb) {
+        orm.deleteRow("burgers", id, cb)
     }
 }
