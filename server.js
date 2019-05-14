@@ -1,9 +1,11 @@
-const express = require("express");
-const app = express();
+var express = require("express");
+var exphbs = require("express-handlebars");
 
-const PORT = process.env.PORT || 8000;
+var PORT = process.env.PORT || 8000;
 
+var app = express();
 app.use(express.static("public"));
+
 app.use(express.urlencoded({
     extended: true
 }));
@@ -16,7 +18,7 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-var routes = require("./controllers/burgers_controllers.js");
+var routes = require("./controllers/burgers_controllers");
 
 app.use(routes);
 

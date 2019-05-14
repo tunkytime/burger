@@ -1,9 +1,26 @@
 <h1>Burgers</h1>
-
-<h2>List of Burgers</h2>
-
-<ul>
+<h4>Not Devoured</h4>
+<div>
     {{#each burgers}}
-    <li>{{burger_name}}</li>>
+    {{#unless devoured}}
+    <p>{{this.burger_name}}</p>
+    <button data-id={{this.id}} class="devoured">Devoured</button>
+    {{/unless}}
     {{/each}}
-</ul>
+</div>
+<hr>
+<h4>Devoured</h4>
+<div>
+    {{#each burgers}}
+    {{#if devoured}}
+    <p>{{this.burger_name}}</p>
+    <button data-id={{this.id}} class="delete">Delete</button>
+    {{/if}}
+    {{/each}}
+</div>
+<hr>
+<h4>Add a Burger</h4>
+<div>
+    <input type="text" id="addBurger">
+    <button class="addBurger">Add Burger</button>
+</div>
